@@ -1,10 +1,42 @@
-<html>
-<head>
-	<title>yo yo yo</title>
-</head>
-<body>
-	<h1>Hello!</h1>
-	<div>chica</div>
-	<p>test</p>
-</body>
+<!DOCTYPE html>
+
+<html x-ng-app="">
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css" />
+		<title>World Cup Tic-Tac-Toe</title><!-- 
+		// <script	type ="text/javascript" src="script.js"></script> -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+	</head>
+<!-- deleted onload=init() and added x-ng-init
+ -->	<body x-ng-init="brasil = ''">
+		<h1>World Cup Tic-Tac-Toe!</h1>
+		<h2><img src="img/brasil.jpg" class="avatar" /> Brazil vs <img src="img/argentina.jpg" class="avatar" />Argentina</h2>
+      	<div id="mainfield">
+	      	<div id="board">
+	            <div class="divRow">
+	                <!-- added x-ng-click and populates cell with image -->
+ 					<div class="divCell" id="div11" x-ng-click="brasil= 'img/brasil.jpg'"><img x-ng-src="{{brasil}}" /></div>
+	                <div class="divCell" id="div12"></div>
+	                <div class="divCell" id="div13"></div>
+	            </div>
+	            <div class="divRow">
+	                <div class="divCell" id="div21"></div>
+	                <div class="divCell" id="div22"></div>
+	                <div class="divCell" id="div23"></div>
+	           </div>
+	            <div class="divRow">
+	                <div class="divCell" id="div31"></div>
+	                <div class="divCell" id="div32"></div>
+	                <div class="divCell" id="div33"></div>
+	           </div>
+	      	</div>
+	      </div>
+		<br />
+	      <input type= "button" value="Clear Board" onclick="window.location.href=window.location.href" id="clear">
+	</body>
+
 </html>
+
+<!--PLAY!
+<body x-ng-init="brasil = true">
+<div x-ng-click="imgSrc = (brasil ? 'img/brasil.jpg' : 'img/argentina.jpg') ; brasil = false; " x-ng-bind="moves"></div> -->
