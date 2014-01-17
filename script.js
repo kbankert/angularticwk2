@@ -1,3 +1,51 @@
+//controller to control the game play i.e. trigger ball to pop up in each square
+function gameCtrl ($scope) {
+	$scope.teams = [
+		{team: "Brasil",
+		turn: true,
+		tracking: "b",
+		gamepiece: "img/brasil.jpg",
+		golimg: "img/brasilgol.jpg",
+		cell00: false,
+		cell01: false,
+		cell02: false,
+		cell10: false,
+		cell11: false,
+		cell12: false,
+		cell20: false,
+		cell21: false,
+		cell22: false},
+		
+		{team: "Argentina",
+		turn: false,
+		tracking: "a",
+		gamepiece: "img/argentina.jpg",
+		golimg: "img/argentinagol.jpg",
+		cell00: false,
+		cell01: false,
+		cell02: false,
+		cell10: false,
+		cell11: false,
+		cell12: false,
+		cell20: false,
+		cell21: false,
+		cell22: false}];
+
+	$scope.cells = [
+		["","",""],
+		["","",""],
+		["","",""]
+	];
+
+	$scope.play = function(row, col) {
+		$scope.cells[row][col] = $scope.teams[0].turn ? $scope.teams[0].gamepiece : $scope.teams[1].gamepiece;
+		$scope.teams[0].turn = !$scope.teams[0].turn;
+	}
+
+}
+
+///Original JS for working JS app
+
 // Starting with Brazil
 var brasil = true;
 // Array of moves made by player(s)

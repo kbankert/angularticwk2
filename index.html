@@ -1,42 +1,62 @@
 <!DOCTYPE html>
 
 <html x-ng-app="">
-	<head>
-		<link type="text/css" rel="stylesheet" href="stylesheet.css" />
-		<title>World Cup Tic-Tac-Toe</title><!-- 
-		// <script	type ="text/javascript" src="script.js"></script> -->
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-	</head>
-<!-- deleted onload=init() and added x-ng-init
- -->	<body x-ng-init="brasil = ''">
-		<h1>World Cup Tic-Tac-Toe!</h1>
-		<h2><img src="img/brasil.jpg" class="avatar" /> Brazil vs <img src="img/argentina.jpg" class="avatar" />Argentina</h2>
-      	<div id="mainfield">
-	      	<div id="board">
-	            <div class="divRow">
-	                <!-- added x-ng-click and populates cell with image -->
- 					<div class="divCell" id="div11" x-ng-click="brasil= 'img/brasil.jpg'"><img x-ng-src="{{brasil}}" /></div>
-	                <div class="divCell" id="div12"></div>
-	                <div class="divCell" id="div13"></div>
-	            </div>
-	            <div class="divRow">
-	                <div class="divCell" id="div21"></div>
-	                <div class="divCell" id="div22"></div>
-	                <div class="divCell" id="div23"></div>
-	           </div>
-	            <div class="divRow">
-	                <div class="divCell" id="div31"></div>
-	                <div class="divCell" id="div32"></div>
-	                <div class="divCell" id="div33"></div>
-	           </div>
-	      	</div>
-	      </div>
-		<br />
-	      <input type= "button" value="Clear Board" onclick="window.location.href=window.location.href" id="clear">
-	</body>
+<head>
+	<title></title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="stylesheet.css" />
+	<script	type ="text/javascript" src="script.js"></script>
+</head>
+<body onload="init()">
+	<h1>World Cup Tic-Tac-Toe!</h1>
+	<h2><img src="img/brasil.jpg" class="avatar" /> Brazil vs <img src="img/argentina.jpg" class="avatar" />Argentina</h2>
+	<div id="mainfield">
+	<br />
+		<div id="board" x-ng-controller= "gameCtrl">
+			
+			<div class="fieldrow" x-ng-repeat="row in cells track by $index">
+				<div class="fieldcell" id="{{cells[$parent.$index][$index]}}" x-ng-repeat="c in cells track by $index" x-ng-click="play($parent.$index, $index)">
+						<!-- add ng-class to toggle between display: none and inline block -->
+						<img x-ng-src="{{cells[$parent.$index][$index]}}">
 
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<br />
+	      <input type= "button" value="Clear Board" onclick="window.location.href=window.location.href" id="clear">
+</body>
 </html>
 
-<!--PLAY!
-<body x-ng-init="brasil = true">
-<div x-ng-click="imgSrc = (brasil ? 'img/brasil.jpg' : 'img/argentina.jpg') ; brasil = false; " x-ng-bind="moves"></div> -->
+
+
+
+<!--as of 5:21pm jan 16
+
+<html x-ng-app="">
+<head>
+	<title></title>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="stylesheet.css" />
+	<script	type ="text/javascript" src="script.js"></script>
+</head>
+<body onload="init()">
+	<h1>World Cup Tic-Tac-Toe!</h1>
+	<h2><img src="img/brasil.jpg" class="avatar" /> Brazil vs <img src="img/argentina.jpg" class="avatar" />Argentina</h2>
+	<div id="mainfield">
+	<br />
+		<div id="board" x-ng-controller= "gameCtrl" x-ng-init="cells=[['','',''],['','',''],['','','']]; brasil = {val:true};">
+			<div class="fieldrow" x-ng-repeat="row in cells track by $index">
+			
+				<div class="fieldcell" x-ng-repeat="c in cells track by $index"
+				x-ng-click="cells[$parent.$index][$index] = (brasil.val ? 'img/brasil.jpg' : 'img/argentina.jpg'); brasil.val = !brasil.val;">
+		
+				<img src={{cells[$parent.$index][$index]}}>
+				</div>
+			</div>
+		</div>
+	<br />
+	      <input type= "button" value="Clear Board" onclick="window.location.href=window.location.href" id="clear">
+</body>
+</html> -->
