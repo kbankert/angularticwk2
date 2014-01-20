@@ -7,12 +7,12 @@
 	<link type="text/css" rel="stylesheet" href="stylesheet.css" />
 	<script	type ="text/javascript" src="script.js"></script>
 </head>
-<body>
+<body x-ng-controller= "gameCtrl" x-ng-init="cellsDisplay">
 	<h1>World Cup Tic-Tac-Toe!</h1>
-	<h2><img src="img/brasil.jpg" class="avatar" /> Brazil vs <img src="img/argentina.jpg" class="avatar" />Argentina</h2>
+	<h2><img src="img/brasil.jpg" class="avatar" /> Brazil: {{brasilScoreCount}} vs <img src="img/argentina.jpg" class="avatar" />Argentina: {{argentinaScoreCount}}</h2>
 	<div id="mainfield">
 	<br />
-		<div id="board" x-ng-controller= "gameCtrl" x-ng-init="cellsDisplay">
+		<div id="board">
 			
 			<div class="fieldrow" x-ng-repeat="row in cellsDisplay track by $index" x-ng-repeat= "row in cellsScore track by $index">
 				<div class="fieldcell" x-ng-repeat="c in cellsDisplay track by $index" x-ng-repeat="c in cellsScore track by $index" x-ng-click="play($parent.$index, $index)">
@@ -24,9 +24,11 @@
 		</div>
 	</div>
 	<br />
-	      <input type= "button" value="Clear Board" onclick="window.location.href=window.location.href" id="clear">
+	      <input type= "button" value="Clear Board" id="clear" x-ng-click="clearBoard()">
 </body>
 </html>
 
+<!-- 
+onclick="window.location.href=window.location.href" -->
 
 

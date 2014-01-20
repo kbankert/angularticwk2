@@ -1,5 +1,8 @@
 //controller to control the game play i.e. trigger ball to pop up in each square
 
+brasilScoreCount = 0;
+argentinaScoreCount = 0;
+
 function gameCtrl ($scope) {
 	$scope.teams = [
 		{team: "Brasil",
@@ -27,12 +30,15 @@ function gameCtrl ($scope) {
 		[null,null,null]
 	];
 
-	$brasilwin = false;
-	$argentinawin = false;
-
+	$scope.brasilwin = false;
+	$scope.argentinawin = false;
+	$scope.windance = document.getElementById("mainfield");
+	$scope.brasilScoreCount = 0;
+	$scope.argentinaScoreCount = 0;
+	
 	$scope.play = function(row, col) {
 
-		if($scope.cellsDisplay[row][col] == "") {
+		if($scope.cellsScore[row][col] == null) {
 
 			if ($scope.teams[0].turn == true) {
 				$scope.cellsDisplay[row][col] = $scope.teams[0].gamepiece;
@@ -64,9 +70,10 @@ function gameCtrl ($scope) {
 			|| ($scope.cellsScore[0][2] + $scope.cellsScore[1][2] + $scope.cellsScore[2][2] == "bbb")) 
 		{	
 			brasilwin = true;
-			alert("Brasil, Wins!");
 			//swap out the mainfield image with an alternative image if brasil is a winner
-			
+			$scope.windance.style.backgroundImage = "url('img/brasilgol.jpg')";
+			$scope.brasilScoreCount++;
+			console.log($scope.brasilScoreCount);
 		}
 		//else, if any of these situations are true, then brasil wins
 		else if (($scope.cellsScore[0][0] + $scope.cellsScore[0][1] + $scope.cellsScore[0][2] == "aaa")
@@ -80,8 +87,8 @@ function gameCtrl ($scope) {
 		{
 			argentinawin = true;
 			//swap out the mainfield image with an alternative image if argentina is a winner
-			alert("Argentina, Wins!");
-			
+			$scope.windance.style.backgroundImage = "url('img/argentinagol.jpg')";
+			$scope.argentinaScoreCount++;
 		}
 		//else, if there have been 9 plays and there is still no winner, then it is a cat's game
 		else if ($scope.cellsScore[0][0] !== null
@@ -101,7 +108,24 @@ function gameCtrl ($scope) {
 		{
 			return false;
 		}
-	}
+	};
+
+	// $scope.clearBoard = function () {
+	// 	$scope.windance.style.backgroundImage = "url('img/mainfield.jpg')";
+	// 	$scope.cellsDisplay = [["","",""],["","",""],["","",""]];
+	// };
+
+	$scope.clearBoard = function () {
+		$scope.windance.style.backgroundImage = "url('img/field.jpg')";
+		for (var row = 0; row < $scope.cellsDisplay.length; row++) {
+			for (var col = 0; col < $scope.cellsDisplay.length; col++) {
+				$scope.cellsDisplay[row][col] = 'img/blank.png';
+				$scope.cellsScore[row][col] = null;
+			}
+			
+		}
+		console.log($scope.cellsScore);
+	};
 }
 
 
