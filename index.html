@@ -7,20 +7,19 @@
 	<link type="text/css" rel="stylesheet" href="stylesheet.css" />
 	<script	type ="text/javascript" src="script.js"></script>
 </head>
-<body onload="init()">
+<body>
 	<h1>World Cup Tic-Tac-Toe!</h1>
 	<h2><img src="img/brasil.jpg" class="avatar" /> Brazil vs <img src="img/argentina.jpg" class="avatar" />Argentina</h2>
 	<div id="mainfield">
 	<br />
-		<div id="board" x-ng-controller= "gameCtrl">
+		<div id="board" x-ng-controller= "gameCtrl" x-ng-init="cellsDisplay">
 			
-			<div class="fieldrow" x-ng-repeat="row in cells track by $index">
-				<div class="fieldcell" id="{{cells[$parent.$index][$index]}}" x-ng-repeat="c in cells track by $index" x-ng-click="play($parent.$index, $index)">
-						<!-- add ng-class to toggle between display: none and inline block -->
-						<img x-ng-src="{{cells[$parent.$index][$index]}}">
+			<div class="fieldrow" x-ng-repeat="row in cellsDisplay track by $index" x-ng-repeat= "row in cellsScore track by $index">
+				<div class="fieldcell" x-ng-repeat="c in cellsDisplay track by $index" x-ng-repeat="c in cellsScore track by $index" x-ng-click="play($parent.$index, $index)">
+						
+						<img x-ng-src="{{cellsDisplay[$parent.$index][$index]}}">
 
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -31,32 +30,3 @@
 
 
 
-
-<!--as of 5:21pm jan 16
-
-<html x-ng-app="">
-<head>
-	<title></title>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-	<link type="text/css" rel="stylesheet" href="stylesheet.css" />
-	<script	type ="text/javascript" src="script.js"></script>
-</head>
-<body onload="init()">
-	<h1>World Cup Tic-Tac-Toe!</h1>
-	<h2><img src="img/brasil.jpg" class="avatar" /> Brazil vs <img src="img/argentina.jpg" class="avatar" />Argentina</h2>
-	<div id="mainfield">
-	<br />
-		<div id="board" x-ng-controller= "gameCtrl" x-ng-init="cells=[['','',''],['','',''],['','','']]; brasil = {val:true};">
-			<div class="fieldrow" x-ng-repeat="row in cells track by $index">
-			
-				<div class="fieldcell" x-ng-repeat="c in cells track by $index"
-				x-ng-click="cells[$parent.$index][$index] = (brasil.val ? 'img/brasil.jpg' : 'img/argentina.jpg'); brasil.val = !brasil.val;">
-		
-				<img src={{cells[$parent.$index][$index]}}>
-				</div>
-			</div>
-		</div>
-	<br />
-	      <input type= "button" value="Clear Board" onclick="window.location.href=window.location.href" id="clear">
-</body>
-</html> -->
