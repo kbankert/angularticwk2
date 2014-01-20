@@ -15,8 +15,7 @@
 		<div id="board">
 			
 			<div class="fieldrow" x-ng-repeat="row in cellsDisplay track by $index" x-ng-repeat= "row in cellsScore track by $index">
-				<div class="fieldcell" x-ng-repeat="c in cellsDisplay track by $index" x-ng-repeat="c in cellsScore track by $index" x-ng-click="play($parent.$index, $index)">
-						
+				<div class="fieldcell" id="cells{{$parent.$index}}{{$index}}" x-ng-repeat="c in cellsDisplay track by $index" x-ng-repeat="c in cellsScore track by $index" x-ng-click="play($parent.$index, $index)">
 						<img x-ng-src="{{cellsDisplay[$parent.$index][$index]}}">
 
 				</div>
@@ -27,8 +26,5 @@
 	      <input type= "button" value="Clear Board" id="clear" x-ng-click="clearBoard()">
 </body>
 </html>
-
-<!-- 
-onclick="window.location.href=window.location.href" -->
 
 

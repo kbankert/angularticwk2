@@ -89,3 +89,48 @@ img {
   background-color: white;
 }
 
+.fieldcell#cells00 {
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+#cells01 {
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+}
+
+#cells02 {
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+}
+#cells10 {
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;  
+  border-top: 2px solid white;
+}
+#cells11 {
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+}
+#cells12 {
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+}
+
+#cells20 {
+  border-right: 2px solid white;
+  border-top: 2px solid white;
+}
+#cells21 {
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+}
+#cells22 {
+  border-left: 2px solid white;
+  border-top: 2px solid white;
+}
