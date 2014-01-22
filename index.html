@@ -7,9 +7,9 @@
 	<link type="text/css" rel="stylesheet" href="stylesheet.css" />
 	<script	type ="text/javascript" src="script.js"></script>
 </head>
-<body x-ng-controller= "gameCtrl" x-ng-init="cellsDisplay">
+<body x-ng-controller= "gameCtrl" x-ng-init="cellsDisplay; teams">
 	<h1>World Cup Tic-Tac-Toe!</h1>
-	<h2><img src="img/brasil.jpg" class="avatar" /> Brazil: {{brasilScoreCount}} vs <img src="img/argentina.jpg" class="avatar" />Argentina: {{argentinaScoreCount}}</h2>
+	<h2><img src={{teams[0].gamepiece}} class="avatar" /> Brazil: {{teams[0].score}} vs <img src={{teams[1].gamepiece}} class="avatar" />Argentina: {{teams[1].score}}</h2>
 	<div id="mainfield">
 	<br />
 		<div id="board">
