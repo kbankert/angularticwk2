@@ -76,6 +76,7 @@ function gameCtrl ($scope) {
 		};	
 
 	$scope.checkWin = function() {
+		function makeGolImgUrl(position) { return "url(" + $scope.teams[position].golimg + ")"; }
 		if (($scope.cellsScore[0][0] + $scope.cellsScore[0][1] + $scope.cellsScore[0][2] == "bbb")
 			|| ($scope.cellsScore[1][0] + $scope.cellsScore[1][1] + $scope.cellsScore[1][2] == "bbb")
 			|| ($scope.cellsScore[2][0] + $scope.cellsScore[2][1] + $scope.cellsScore[2][2] == "bbb")
@@ -89,10 +90,10 @@ function gameCtrl ($scope) {
 			//swap out the mainfield image with an alternative image if brasil is a winner
 			
 			//this is not working...goes straight to tally a point but skips the celebration image
-			$scope.winImg = document.getElementById("mainfield").src;
-			$scope.winImg.style.background.src="$scope.teams[0].golimg";
+			$scope.winImg = document.getElementById("mainfield");
+			$scope.winImg.style.background=$scope.teams[0].golimg;
 			
-			// $scope.winImg.style.backgroundImage = "url('img/brasilgol.jpg')";
+			$scope.winImg.style.backgroundImage = makeGolImgUrl(0);
 			
 			$scope.teams[0].score++;
 		}
@@ -108,7 +109,7 @@ function gameCtrl ($scope) {
 		{
 			$scope.teams[1].win = true;
 			//swap out the mainfield image with an alternative image if argentina is a winner
-			$scope.winImg.style.backgroundImage = $scope.teams[1].golimg;
+			$scope.winImg.style.backgroundImage = "url(" + $scope.teams[1].golimg + ")";
 			$scope.teams[1].score++;
 		}
 		//else, if there have been 9 plays and there is still no winner, then it is a cat's game
